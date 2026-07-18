@@ -1,18 +1,19 @@
 const express = require("express");
 const path = require("path");
 
-const router = express.Router();
 const rootDirectory = require("../utils/path");
 
-router.get("/add-perfume", (req, res, next) => {
-  res.sendFile(path.join(rootDirectory, "views", "add-perfume.html"));
+const router = express.Router();
+
+router.get("/add-product", (req, res, next) => {
+  res.sendFile(path.join(rootDirectory, "views", "add-product.html"));
 });
 
-router.post("/add-perfume", (req, res, next) => {
+router.post("/add-product", (req, res, next) => {
   console.log(
-    `New perfume added: ${req.body.perfumeName}, redirecting to homepage...`,
+    `New perfume added: ${req.body.productName}, redirecting to homepage...`,
   );
-  //   res.redirect("/admin/add-perfume");
+  //   res.redirect("/admin/add-product");
 });
 
 module.exports = router;
