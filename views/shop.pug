@@ -1,0 +1,22 @@
+extends layouts/main-layout.pug
+
+block styles 
+    link(rel="stylesheet", href="/css/shop.css")
+
+block content
+    div.wrapper
+        h1.title Welcome to perfume store
+        a.link(href="/admin/add-product") Add perfume page
+        
+        
+    div.productsList
+        if prods.length > 0  
+            each product in prods
+                div  
+                    h1 #{product.title}
+                    img(src="https://cdn.shopify.com/s/files/1/0554/2998/8522/files/33_480x480.jpg?v=1672391447", alt="dior sauvage")
+                    h2 Price $80
+                    p Description here
+                    button Add to cart
+        else 
+            h1 No products
