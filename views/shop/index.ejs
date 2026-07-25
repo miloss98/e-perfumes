@@ -1,4 +1,4 @@
-<%- include("includes/head.ejs") %>
+<%- include("../includes/head.ejs") %>
 <link rel="stylesheet" href="css/shop.css">
 <div class="wrapper">
   <h1 class="title">Welcome to perfume store</h1>
@@ -6,12 +6,17 @@
   <% if (prods.length > 0 ) { %>
     <div class="productsList">
       <% for (let product of prods) { %>
-        <div>
+       <div>
           <div>
             <h1> <%= product.title %> </h1>
-            <img src="https://cdn.shopify.com/s/files/1/0554/2998/8522/files/33_480x480.jpg?v=1672391447" alt="dior sauvage" />
-            <h2> price $80</h2>
-            <p> description here</p>
+            <img src=<%= product.imageUrl %> alt=<%= product.title %> />
+            <h2> <%= product.price %> </h2>
+            <p> <%= product.description %> </p>
+          </div>
+          <div>
+            <form action="/add-to-cart" method="POST">
+              <button > Add to cart </button>
+            </form>
           </div>
         </div>
       <% } %>
