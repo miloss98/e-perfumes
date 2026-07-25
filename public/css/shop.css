@@ -1,8 +1,9 @@
-body {
-  background: gray;
+.wrapper {
+  padding: 0px 10px;
 }
 
-.wrapper {
+.title {
+  margin: 20px 0px;
 }
 
 .link {

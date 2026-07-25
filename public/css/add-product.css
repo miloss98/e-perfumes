@@ -1,8 +1,5 @@
-body {
-  background: lightblue;
-}
 .content {
-  margin-top: 100px;
-  background: lightcoral;
+  margin-top: 20px;
   width: 300px;
+  padding: 0px 10px;
 }
