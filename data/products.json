@@ -2,6 +2,19 @@
   {
     "title": "Bleu de Chanel",
     "imageUrl": "https://videodelivery.net/0f706228481ebbba4a269585f602cefb/thumbnails/thumbnail.jpg",
-    "price": "80$"
+    "price": 80,
+    "id": "12345"
+  },
+  {
+    "title": "YSL Y",
+    "imageUrl": "https://www.fridaycharm.com/cdn/shop/products/YSL-Y-Men-EDP-100ml-4.jpg?v=1577261655&width=1080",
+    "price": 60,
+    "id": "22567704301176006"
+  },
+  {
+    "title": "Dior Sauvage",
+    "imageUrl": "https://www.dior.com/dw/image/v2/BGXS_PRD/on/demandware.static/-/Library-Sites-DiorSharedLibrary/default/dwf80880b6/images/beauty/01-FRAGRANCES/2025/PDP-REVAMP/SAUVAGE/Y0785220/POSTER_DIOR_SAUVAGE_CAPSULE_EDP_VA_916.jpg?sw=800",
+    "price": "90",
+    "id": "0.6658321094512203"
   }
 ]

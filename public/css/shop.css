@@ -1,5 +1,6 @@
 .wrapper {
   padding: 0px 10px;
+  width: 100%;
 }
 
 .title {
@@ -8,4 +9,22 @@
 
 .link {
   color: red;
+}
+
+.grid {
+  display: flex;
+  gap: 16px;
+}
+
+.productsList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.products {
+  display: flex;
+  flex-direction: column;
+}
+.products > img {
+  width: 300px;
+  height: 300px;
 }
