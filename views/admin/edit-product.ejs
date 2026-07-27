@@ -2,7 +2,31 @@
 <link rel="stylesheet" href="css/add-product.css" />
   <body>
     <div class="content">
-      <h1>Edit product page</h1>
+      <h1>Add product page</h1>
+      <form class="form" action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST">
+        <div>
+          <label for="title"> Product Name </label>
+          <input type="text" name="title" value="<% if (editing) { %><%= product.title%><% } %>" />
+        </div>
+        <div>
+          <label for="imageUrl"> Image URL</label>
+          <input type="text" name="imageUrl" value="<% if (editing) { %><%= product.imageUrl%><% } %>"/>
+        </div> 
+        <div>
+          <label for="price"> Price </label>
+          <input type="number" name="price" value="<% if (editing) { %><%= product.price%><% } %>"/>
+        </div>
+        <div>
+          <label for="description"> Description </label>
+          <input type="text" name="description" value="<% if (editing) { %><%= product.description%><% } %>"/>
+        </div>
+
+        <% if (editing) { %>
+          <input type="hidden" value="<%= product.id %>" name="productId"/>
+        <% } %>
+
+        <button type="submit"><% if (editing) { %> Update product <% } else { %> Add product <% } %> </button>
+      </form>
     </div>
   </body>
 </html>

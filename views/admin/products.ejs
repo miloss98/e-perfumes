@@ -1,30 +1,30 @@
 <%- include("../includes/head.ejs") %>
-<link rel="stylesheet" href="css/shop.css">
+<link rel="stylesheet" href="css/main.css">
 <div class="wrapper">
   <h1 class="title">(Admin) Products page</h1>
 
   <% if (prods.length > 0 ) { %>
-    <div class="productsList">
-      <% for (let product of prods) { %>
-        <div>
-          <div class="products">
-            <h1> <%= product.title %> </h1>
-            <img src=<%= product.imageUrl %> alt=<%= product.title %> />
-            <h2> $<%= product.price %> </h2>
-            <p> <%= product.description %> </p>
-          </div>
-            <a href="/products/<%= product.id %>"> Details </a>
-            <a href="/admin/edit-product"> Edit </a>
-            <form action="/admin/delete-product" method="POST">
-              <button type="submit"> Delete </button>
-            </form>
-          </div>
+  <div class="productsList">
+    <% for (let product of prods) { %>
+      <div>
+        <div class="products">
+          <h1> <%= product.title %> </h1>
+          <img src=<%= product.imageUrl %> alt=<%= product.title %> />
+          <h2> $<%= product.price %> </h2>
+          <p> <%= product.description %> </p>
         </div>
-      <% } %>
-      <% } else { %>
-        <h2>No perfumes found</h2>
-    </div>
-  <% } %>
+          <!-- <a href="/products/<%= product.id %>"> Details </a> -->
+          <a href="/admin/edit-product/<%= product.id %>?edit=true"> Edit </a>
+          <form action="/admin/delete-product" method="POST">
+            <button type="submit"> Delete </button>
+          </form>
+        </div>
+      </div>
+    <% } %>
+    <% } else { %>
+      <h2>No perfumes found</h2>
   </div>
+  <% } %>
+</div>
 </body>
 
