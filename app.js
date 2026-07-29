@@ -2,6 +2,8 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 
+const sequelize = require("./utils/database");
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -18,4 +20,12 @@ app.use("/admin", adminRoutes);
 app.use(clientRoutes);
 app.use(pageNotFound);
 
-app.listen(3000);
+sequelize
+  .sync()
+  .then((results) => {
+    console.log(results);
+    app.listen(3000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
