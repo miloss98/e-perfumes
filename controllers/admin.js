@@ -21,12 +21,11 @@ exports.postAddProduct = (req, res, next) => {
   })
     .then((result) => {
       console.log(result);
+      res.redirect("/admin/products");
     })
     .catch((err) => {
       console.log(err);
     });
-
-  // res.redirect("/");
 };
 
 exports.getEditProduct = (req, res, next) => {
@@ -82,7 +81,10 @@ exports.getAllProducts = (req, res, next) => {
 };
 
 exports.postDeleteProduct = (req, res, next) => {
-  const id = req.body.productId;
-  Product.deleteById(id);
-  res.redirect("/admin/products");
+  const prodId = req.body.productId;
+  Product.destroy({ where: { id: prodId } })
+    .then((result) => {
+      res.redirect("/admin/products");
+    })
+    .catch((err) => console.log(err));
 };
