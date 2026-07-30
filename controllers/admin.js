@@ -34,16 +34,18 @@ exports.getEditProduct = (req, res, next) => {
   if (!editMode) {
     return res.redirect("/");
   }
-
   const id = req.params.productId;
-  Product.findOne(id, (product) => {
-    if (!product) res.redirect("/");
-    res.render("admin/edit-product", {
-      pageTitle: "Edit Product",
-      editing: editMode,
-      product: product,
-    });
-  });
+
+  Product.findByPk(id)
+    .then((product) => {
+      if (!product) res.redirect("/");
+      res.render("admin/edit-product", {
+        pageTitle: "Edit Product",
+        editing: editMode,
+        product: product,
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.postEditProduct = (req, res, next) => {
@@ -52,25 +54,31 @@ exports.postEditProduct = (req, res, next) => {
   const updatedImageUrl = req.body.imageUrl;
   const updatedPrice = req.body.price;
   const updatedDescription = req.body.description;
-  const updatedProduct = new Product(
-    id,
-    updatedTitle,
-    updatedImageUrl,
-    updatedPrice,
-    updatedDescription,
-  );
-  updatedProduct.save();
-  res.redirect("/admin/products");
+
+  Product.findByPk(id)
+    .then((product) => {
+      ((product.title = updatedTitle),
+        (product.imageUrl = updatedImageUrl),
+        (product.price = updatedPrice),
+        (product.description = updatedDescription));
+      return product.save();
+    })
+    .then((result) => {
+      console.log("Product updated!");
+      res.redirect("/admin/products");
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.getAllProducts = (req, res, next) => {
-  Product.fetchAll((products) => {
-    res.render("admin/products", {
-      prods: products,
-      pageTitle: "(Admin) Products page",
-      hasProducts: products.length > 0,
-    });
-  });
+  Product.findAll()
+    .then((products) => {
+      res.render("admin/products", {
+        prods: products,
+        pageTitle: "(Admin) Products page",
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.postDeleteProduct = (req, res, next) => {
