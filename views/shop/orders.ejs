@@ -2,10 +2,24 @@
 <link rel="stylesheet" href="css/shop.css">
 <div class="wrapper">
   <h1 class="title">Orders page</h1>
-
-  <div>
-    your orders:
-  </div>
+    <div>
+      <% if (orders.length <= 0) { %>
+       <p> Nothing there</p>
+      <% } else { %>
+        <ul>
+          <% orders.forEach(order=>{ %>
+            <li>
+              <h1># <%= order.id %></h1>
+              <ul>  
+                <% order.products.forEach(product => { %>
+                  <li> <%= product.title %> (<%= product.orderItem.quantity %>)</li>
+                <% }); %>
+              </ul>
+            </li>
+          <% }); %>
+        </ul>
+      <% } %> 
+    </div>
   </div>
 </body>
 
